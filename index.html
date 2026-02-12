@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Proxy</title>
+</head>
+<body>
+    <h1>Tester mon proxy Render</h1>
+
+    <input type="text" id="url" placeholder="https://example.com" style="width:300px;">
+    <button onclick="sendRequest()">Envoyer</button>
+
+    <pre id="result"></pre>
+
+    <script>
+        async function sendRequest() {
+            const target = document.getElementById("url").value;
+
+            const proxy = "https://proxy-node-en7j.onrender.com/proxy?url=";
+
+            const response = await fetch(proxy + encodeURIComponent(target));
+            const text = await response.text();
+
+            document.getElementById("result").textContent = text;
+        }
+    </script>
+</body>
+</html>
